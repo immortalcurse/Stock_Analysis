@@ -1,43 +1,119 @@
-# Stock_Analysis
-Stock Market Analysis Project
-Overview
-This project involves an analysis of trends in the stock market, focusing on volume changes and percentage price changes across various sectors. The analysis was conducted using Python and Jupyter Notebook for data extraction and cleaning, followed by data visualization and exploration using Tableau.
+# NSE Portfolio Intelligence Platform
+### Stock Market Analysis + Interactive Portfolio Optimiser
 
-Project Highlights
-Data Extraction and Preprocessing
-Data was collected from yfinance using Python in Jupyter Notebook.
-Data was cleaned and preprocessed to handle missing values and ensure consistency.
-Companies were assigned to their respective sectors.
-Correlation Matrix
-A correlation matrix was computed to understand the dependencies between different sectors in the stock market.
-Key findings from the correlation matrix include:
-Telecommunication has minimal impact on other sectors.
-Cement and banking sectors exhibit the highest dependency.
-Volume and Price Trends
-Visualizations were created to depict trends in volume change and percentage price change for each sector.
-Patterns and insights were highlighted based on the visualizations.
-Quarterly Analysis
-Analysis of trading volume throughout the year revealed that most trades occurred during the last quarter.
-This was supported by the observation of the maximum change in volume in the fourth quarter.
-Inverse Relationships
-The concept of inverse relationships between sectors, such as gold being inversely related to the stock market, was explored.
-Visual evidence of these inverse relationships was provided.
-COVID-19 Impact
-The impact of the COVID-19 pandemic on various sectors was analyzed.
-Findings included:
-The energy sector experienced significant losses.
-Banking and finance sectors were among the hardest-hit.
-The pharma sector showed resilience and even growth during the pandemic.
-Sector Relationships
-The project highlighted that certain sectors tend to follow the trends of others.
-This observation was supported by visualizations created in Tableau.
-Project Visualization
-The visualizations and interactive dashboards created for this project can be explored in detail on Tableau. You can access the Tableau workbook here.
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Netlify-00C7B7?style=for-the-badge&logo=netlify)](https://lucent-elf-10044c.netlify.app/)
+[![Tableau](https://img.shields.io/badge/Dashboard-Tableau-E97627?style=for-the-badge&logo=tableau)](https://public.tableau.com/app/profile/govardhan.ingle/viz/Stock_Analysis_16944014075480/Dashboard1?publish=yes)
+[![Python](https://img.shields.io/badge/Python-3.x-3776AB?style=for-the-badge&logo=python)](https://www.python.org/)
 
-https://public.tableau.com/app/profile/govardhan.ingle/viz/Stock_Analysis_16944014075480/Dashboard1?publish=yes
+---
 
+## 🔗 Links
 
-Conclusion
-This project provides valuable insights into the stock market's behavior, sector relationships, and the impact of external events like the COVID-19 pandemic. These insights can be valuable for investors and analysts looking to make informed decisions.
+| | |
+|---|---|
+| **Interactive Portfolio Optimiser** | [lucent-elf-10044c.netlify.app](https://lucent-elf-10044c.netlify.app/) |
+| **Tableau Dashboard** | [View on Tableau Public](https://public.tableau.com/app/profile/govardhan.ingle/viz/Stock_Analysis_16944014075480/Dashboard1?publish=yes) |
 
+---
 
+## Overview
+
+This project is an end-to-end NSE equity analysis platform covering **28 stocks across 10 sectors** (Jan 2020 – Jan 2023). It began as a sector trend analysis and evolved into a deployed interactive portfolio optimiser using Markowitz Mean-Variance framework.
+
+---
+
+## Part 1 — Sector Analysis
+
+### Data Collection & Preprocessing
+- Historical price and volume data collected from **Yahoo Finance (yfinance)**
+- Data cleaned and preprocessed in Python (Pandas) — missing values handled, companies mapped to sectors
+- 28 NSE-listed equities across 10 sectors: Banking, IT, Automobile, Pharma, Consumer Goods, Energy, Metals, Cement, Utilities, Telecom
+
+### Key Findings
+
+**Correlation Matrix**
+- Cement and Banking sectors exhibit the **highest inter-sector dependency**
+- Telecom has **minimal impact** on other sectors — acts as market-neutral
+
+**Volume & Price Trends**
+- Sector-level volume change and percentage price change visualised across the full period
+- Patterns identified using dynamic Tableau dashboards with sector filters
+
+**Quarterly Analysis**
+- Trading volume peaks in **Q4** across most sectors — seasonal pattern with implications for portfolio rebalancing
+
+**Inverse Relationships**
+- Gold shows **inverse relationship** to broader equity market — explored as a hedging instrument
+
+**COVID-19 Impact (Feb–Apr 2020)**
+- Energy sector experienced the steepest drawdown
+- Banking & Finance among the hardest hit
+- Pharma sector showed **counter-cyclical resilience** and growth
+
+---
+
+## Part 2 — Portfolio Optimisation
+
+**[→ Try the Live Interactive Dashboard](https://lucent-elf-10044c.netlify.app/)**
+
+Built as an extension of the sector analysis using the same NSE dataset.
+
+### Methodology
+- Applied **Markowitz Mean-Variance Optimisation** across 10 sector representatives
+- Ran **6,000 Monte Carlo simulations** to map the Efficient Frontier
+- Used **Scipy** to solve for mathematically exact optimal portfolio weights
+- Benchmarked against Nifty50 proxy (equal-weighted 28-stock portfolio)
+
+### Results
+
+| Portfolio | Annual Return | Volatility | Sharpe Ratio |
+|---|---|---|---|
+| **Max Sharpe (Optimised)** | **40.46%** | 27.35% | **1.242** |
+| Min Variance | 22.03% | 18.93% | 0.820 |
+| Equal-Weighted | 26.28% | 21.53% | 0.919 |
+| Nifty50 Proxy | 24.98% | 21.29% | 0.868 |
+
+**43% improvement in Sharpe Ratio** over Nifty50 proxy benchmark.
+
+### Interactive Dashboard Features
+- Investment amount input with risk profile selection (Conservative / Moderate / Aggressive)
+- **Efficient Frontier** — 6,000 simulated portfolios coloured by Sharpe ratio
+- **Sector Allocation** — interactive donut chart with per-sector investment breakdown
+- **Wealth Projection** — Bull / Base / Bear scenario forecast over 1–20 year horizon
+
+---
+
+## Tech Stack
+
+| Layer | Tools |
+|---|---|
+| Data Collection | Python, yfinance |
+| Analysis | Pandas, NumPy, Scipy, Matplotlib, Seaborn |
+| Optimisation | Scipy (SLSQP), Monte Carlo Simulation |
+| Visualisation | Tableau, Recharts |
+| Frontend | React.js |
+| Deployment | Netlify |
+
+---
+
+## Project Structure
+
+```
+Stock_Analysis/
+├── data.ipynb                         # Data extraction & cleaning
+├── fa.ipynb                           # Sector & fundamental analysis
+├── Portfolio_Optimisation_NSE.ipynb   # Markowitz optimisation notebook
+├── stock_data.csv                     # Raw NSE price data (28 stocks)
+├── adj_close.csv                      # Processed adjusted close prices
+└── portfolio-optimiser/               # React dashboard (deployed on Netlify)
+    └── src/
+        └── App.js
+```
+
+---
+
+## Author
+
+**Govardhan Ingle**  
+B.Tech, IIT Gandhinagar | WorldQuant BRAIN Gold Level  
+[LinkedIn](#) · [GitHub](#) · [Tableau](https://public.tableau.com/app/profile/govardhan.ingle)
